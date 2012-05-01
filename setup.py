@@ -14,7 +14,7 @@ setup(
     url='https://github.com/mgrouchy/link',
     author='Mike Grouchy',
     author_email='mgrouchy@gmail.com',
-    install_requires=[],
+    install_requires=['oauth2', ],
     packages=['link', ],
     license='MIT',
     long_description='',
