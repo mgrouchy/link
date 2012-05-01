@@ -1,6 +1,6 @@
 #Link - A Linkedin API Wrapper that doesn't suck
 
-![link](https://img.skitch.com/20120501-jnwhfg9r99wup6eduaa9wmqpwt.jpg)
+![link](http://mikegrouchy.com/link/images/link.png)
 
 
 Author: Mike Grouchy ([@mgrouchy](http://twitter.com/mgrouchy))
