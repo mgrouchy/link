@@ -14,7 +14,15 @@ setup(
     url='https://github.com/mgrouchy/link',
     author='Mike Grouchy',
     author_email='mgrouchy@gmail.com',
-    install_requires=['oauth2', ],
+    install_requires=[
+            'certifi==0.0.8',
+            'chardet==1.0.1',
+            'httplib2==0.7.4',
+            'oauth2==1.5.211',
+            'requests==0.11.2'
+            'requests-oauth==0.3.0',
+            'wsgiref==0.1.2',
+            ],
     packages=['link', ],
     license='MIT',
     long_description='',
