@@ -21,6 +21,7 @@ setup(
             'oauth2==1.5.211',
             'requests==0.11.2'
             'requests-oauth==0.3.0',
+            'simplejson==2.5.0',
             'wsgiref==0.1.2',
             ],
     packages=['link', ],
