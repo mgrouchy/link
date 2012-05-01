@@ -1,0 +1,62 @@
+## ignore vim files
+.*.sw[a-z]
+*.un~
+Session.vim
+.ropeproject
+
+## OSX Specific stuff
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+## Ignore Textmate files
+*.tmproj
+*.tmproject
+tmtags
+
+## Ignore SublimeText project files
+/*.sublime-project
+*.sublime-workspace
+
+## Ignore tags created by etags and ctags
+TAGS
+!TAGS/
+tags
+!tags/
+
+## Python Specific
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+#Translations
+*.mo
