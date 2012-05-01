@@ -1,7 +1,8 @@
 import requests
 from urlparse import parse_qs
 from oauth_hook import OAuthHook
-
+from resources import ENDPOINTS
+from functools import partial
 
 class LinkError(Exception):
     pass
@@ -37,18 +38,27 @@ class Link(object):
         hook_kwargs = {
                         'consumer_key': self.linkedin_key,
                         'consumer_secret': self.linkedin_secret,
-                        'oauth_token': self.oauth_token,
-                        'oauth_token_secret': self.oauth_token_secret
+                        #                  'oauth_token': self.oauth_token,
+                        #           'oauth_token_secret': self.oauth_token_secret
                       }
 
         self.client = requests.session(hooks={'pre_request': OAuthHook(**hook_kwargs)})
         self.request_token = None
 
-    def __getattr__(self, *args, **kwargs):
-        """docstring for __getattr__"""
-        pass
+    def __getattr__(self, name):
+        """
+        Implement getattr to map Linkedin Endpoints from the endpoints dict
+        to a partial of request.
+        """
+        try:
+            endpoint = ENDPOINTS[name]
+            return partial(self.request, endpoint['url'], method=endpoint['method'])
+        except KeyError:
+            raise AttributeError
 
-    def request(self, method, *args, **kwargs):
+    def request(self, endpoint, method='GET', params=None):
+        """
+        """
         pass
 
     def get_auth_url(self):
