@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+import sys
+import os
 from link import __version__
 
 try:
@@ -7,11 +8,15 @@ try:
 except ImportError:
     from distutils.core import setup
 
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    sys.exit()
+
 setup(
     name='link',
     version='.'.join(str(x) for x in __version__),
     description='',
-    url='https://github.com/mgrouchy/link',
+    url='http://mikegrouchy.com/link',
     author='Mike Grouchy',
     author_email='mgrouchy@gmail.com',
     install_requires=[
@@ -25,6 +30,6 @@ setup(
             'wsgiref==0.1.2',
             ],
     packages=['link', ],
-    license='MIT',
+    license=open('LICENSE').read(),
     long_description='',
 )
