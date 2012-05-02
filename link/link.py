@@ -64,7 +64,7 @@ class Link(object):
 
     def request(self, endpoint, method='GET', data=None, field_selectors=None):
         """
-        Execute a Linkedin API request
+       ` Execute a Linkedin API request
         params:
             endpoint:
             method:
@@ -103,7 +103,7 @@ class Link(object):
         if callback:
             params['oauth_callback'] = callback
 
-        return '%s?%s' % (self.authorize_url, urllib.urlencode(params)
+        return '%s?%s' % (self.authorize_url, urllib.urlencode(params))
 
     def get_request_token(self, callback=None):
         """
@@ -113,7 +113,7 @@ class Link(object):
         response = self.client.get(self.request_token_url)
 
         self.request_token = parse_qs(response.content)
-        self.request_token['url'] = self.get_auth_url(request_token['oauth_token'], callback=callback)
+        self.request_token['url'] = self.get_auth_url(self.request_token['oauth_token'], callback=callback)
         return self.request_token
 
     def get_access_token(self, verifier):
