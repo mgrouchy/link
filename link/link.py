@@ -127,5 +127,3 @@ class Link(object):
         self.oauth_token = access_token['oauth_token']
         self.oauth_token_secret = access_token['oauth_token_secret']
         return access_token
-
-
