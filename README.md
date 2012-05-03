@@ -14,7 +14,7 @@ request_token = l.get_request_token()
 
 # now open up request_token['url'] in your browser and authorize your app
 # you will be given a verifier with which you can get your access token
-access_token = l.get_access_token(yourverfiergoeshere')
+access_token = l.get_access_token(yourverfiergoeshere)
 
 #now you can make a request for your profile info
 l.get_profile()
