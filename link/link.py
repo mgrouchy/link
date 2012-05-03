@@ -16,8 +16,8 @@ class Link(object):
     """
     Link is the main interface for the linkedin Api
     """
-    def __init__(self, linkedin_key=None, linkedin_secret=None,
-                     oauth_token=None, oauth_token_secret=None):
+    def __init__(self, linkedin_key, linkedin_secret,
+                oauth_token=None, oauth_token_secret=None):
         """
         :param linkedin_key:
         :param linkedin_secret:
@@ -37,17 +37,26 @@ class Link(object):
         if not (self.linkedin_key and self.linkedin_secret):
             raise LinkError
 
-        OAuthHook.consumer_key = self.linkedin_key
-        OAuthHook.consumer_secret = self.linkedin_secret
-
         self.oauth_token = oauth_token
         self.oauth_token_secret = oauth_token_secret
 
-        oauth_hook = OAuthHook(access_token=self.oauth_token,
-                               access_token_secret=self.oauth_token_secret)
-
-        self.client = requests.session(hooks={'pre_request': oauth_hook})
+        self.client = self._get_authorized_client(self.linkedin_key, self.linkedin_secret,
+                        oauth_token=self.oauth_token, oauth_token_secret=self.oauth_token_secret)
         self.request_token = None
+
+    def _get_authorized_client(self, linkedin_key, linkedin_secret, oauth_token=None,
+                                                        oauth_token_secret=None):
+        """
+        get Authorized Oauth Client using requests and an OAuthHook
+        """
+        OAuthHook.consumer_key = linkedin_key
+        OAuthHook.consumer_secret = linkedin_secret
+
+        oauth_hook = OAuthHook(access_token=oauth_token,
+                    access_token_secret=oauth_token_secret, header_auth=True)
+
+        client = requests.session(hooks={'pre_request': oauth_hook})
+        return client
 
     def __getattr__(self, name):
         """
@@ -115,9 +124,16 @@ class Link(object):
         response = self.client.get(self.request_token_url)
 
         self.request_token = parse_qs(response.content)
-
+        # update variables
+        self.oauth_token = self.request_token['oauth_token'][0]
+        self.oauth_token_secret = self.request_token['oauth_token_secret'][0]
+        # inject authorization url into request token dict
         self.request_token['url'] = self.get_authorization_url(
                     self.request_token['oauth_token'][0], callback=callback)
+        # update authenticated client
+        self.client = self._get_authorized_client(self.linkedin_key, self.linkedin_secret,
+                    oauth_token=self.oauth_token, oauth_token_secret=self.oauth_token_secret)
+
         return self.request_token
 
     def get_access_token(self, verifier):
@@ -128,8 +144,11 @@ class Link(object):
                 data={'oauth_verifier': verifier})
 
         access_token = parse_qs(response.content)
-        print access_token
+        # update token variables
+        self.oauth_token = access_token['oauth_token'][0]
+        self.oauth_token_secret = access_token['oauth_token_secret'][0]
+        # update authenticated client
+        self.client = self._get_authorized_client(self.linkedin_key, self.linkedin_secret,
+                oauth_token=self.oauth_token, oauth_token_secret=self.oauth_token_secret)
 
-        self.oauth_token = access_token['oauth_token']
-        self.oauth_token_secret = access_token['oauth_token_secret']
         return access_token
