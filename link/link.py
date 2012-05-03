@@ -78,7 +78,7 @@ class Link(object):
         Given a set of field_selectors in the format
             ('selector1, 'selector2', 'selector3')
             or
-            ['selector1, 'selector2', 'selector3']
+            ['selector1, 'selector2', 'selector3', ['s4', 's5']]
 
             return a field selector string in the format
                 ":(selector1,selector2,selector3)
@@ -86,10 +86,14 @@ class Link(object):
         if not field_selectors:
             return ''
 
-        _str = ':(%s)'
+        def unpack_selectors(selector):
+            if not isinstance(selector, (tuple, list)):
+                return ',%s' % selector
+            else:
+                l = ':(%s)' % ''.join([unpack_selectors(s) for s in selector])
+                return l.replace('(,', '(')
 
-        selector_str = _str % ','.join(s for s in field_selectors)
-        return selector_str
+        return unpack_selectors(field_selectors)
 
     def _build_endpoint_url(self, endpoint, method, data=None, named_params=None, field_selectors=None):
         """
