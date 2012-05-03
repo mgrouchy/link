@@ -3,7 +3,8 @@ import requests
 from urlparse import parse_qs
 from oauth_hook import OAuthHook
 from resources import ENDPOINTS
-from functools import partial
+from functools import partial, update_wrapper
+
 
 import simplejson
 
@@ -65,11 +66,56 @@ class Link(object):
         """
         try:
             endpoint = ENDPOINTS[name]
-            return partial(self.request, endpoint['url'], method=endpoint['method'])
+            func = partial(self.request, endpoint['url'], method=endpoint['method'])
+            # update our partial with self.requests attributes
+            update_wrapper(func, self.request)
+            return func
         except KeyError:
             raise AttributeError
 
-    def request(self, endpoint, method='GET', data=None, field_selectors=None):
+    def _get_field_selector_str(self, field_selectors=None):
+        """
+        Given a set of field_selectors in the format
+            ('selector1, 'selector2', 'selector3')
+            or
+            ['selector1, 'selector2', 'selector3']
+
+            return a field selector string in the format
+                ":(selector1,selector2,selector3)
+        """
+        if not field_selectors:
+            return ''
+
+        _str = ':(%s)'
+
+        selector_str = _str % ','.join(s for s in field_selectors)
+        return selector_str
+
+    def _build_endpoint_url(self, endpoint, method, data=None, named_params=None, field_selectors=None):
+        """
+            Given an endpoint and params, construct a proper linkedin url
+        """
+        if named_params:
+            named_param_str = '%s=%s'.join((k, v) for k, v in named_params.iteritems())
+        else:
+            named_param_str = '~'
+
+        if field_selectors:
+            field_selector_str = self._get_field_selector_str(field_selectors)
+
+        endpoint = endpoint % ({
+                                'named_params': named_param_str,
+                                'field_selectors': field_selector_str,
+                              })
+
+        # get our querystring
+        if method == 'get':
+            if data:
+                endpoint = '%s?%s' % (endpoint, urllib.urlencode(data))
+
+        return endpoint
+
+    def request(self, endpoint, method='GET', data=None, named_params=None, field_selectors=None):
         """
         Execute a Linkedin API request
         :param endpoint:
@@ -84,19 +130,12 @@ class Link(object):
         if method not in ['get', 'post', 'delete', 'put']:
             raise LinkError
 
-        # compose our arguments
-        if method == 'get':
-            if not data:
-                query_str = '~'
-            else:
-                query_str = urllib.urlencode(data)
-
-            endpoint = endpoint % query_str
-
-        # get a client
         _client = getattr(self.client, method)
         if not _client:
             raise LinkError
+
+        endpoint = self._build_endpoint_url(endpoint, method, data=data,
+                    named_params=named_params, field_selectors=field_selectors)
 
         response = _client(endpoint, data=data, headers=headers)
 

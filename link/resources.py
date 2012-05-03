@@ -4,7 +4,7 @@ BASE_API = 'api.linkedin.com'
 ENDPOINTS = {
         'profile': {
             'method': 'GET',
-            'url': 'https://api.linkedin.com/v1/people/%s',
+            'url': 'https://api.linkedin.com/v1/people/%(named_params)s%(field_selectors)s',
         },
         # 'connections': {
         #    'method': 'GET',
