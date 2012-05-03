@@ -24,4 +24,9 @@ l.get_profile(field_selectors=('id', 'first-name', 'last-name', 'company'))
 
 ```
 
+#Want to Contribute?
+Fork this repo, submit a pull request with your changes and an updated Authors.md with your name.
+
+Thats it!
+
 Author: Mike Grouchy ([@mgrouchy](http://twitter.com/mgrouchy))
