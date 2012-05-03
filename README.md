@@ -1,6 +1,6 @@
 #Link - A Linkedin API Wrapper that doesn't suck
 
-![link](http://mikegrouchy.com/link/images/link.png)
+![link](https://a248.e.akamai.net/camo.github.com/d3e948a500a39390a2f47415016ef06a9fb6aca4/687474703a2f2f6d696b6567726f756368792e636f6d2f6c696e6b2f696d616765732f6c696e6b2e706e67)
 
 #Magnets, how do they work?!
 
