@@ -23,6 +23,10 @@ l.get_profile(field_selectors=('id', 'first-name', 'last-name', 'company'))
 
 ```
 
+#Bugs?
+See a bug and want me to fix it? Create an issue and your wish, is my command(sort of).
+
+
 #Want to Contribute?
 Fork this repo, submit a pull request with your changes and an updated Authors.md with your name.
 
