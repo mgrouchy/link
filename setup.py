@@ -15,7 +15,7 @@ if sys.argv[-1] == 'publish':
 setup(
     name='link',
     version='.'.join(str(x) for x in __version__),
-    description='',
+    description='Your Master Sword for dealing with the Linkedin API',
     url='http://mikegrouchy.com/link',
     author='Mike Grouchy',
     author_email='mgrouchy@gmail.com',
@@ -29,5 +29,5 @@ setup(
                 'wsgiref==0.1.2'],
     packages=['link', ],
     license=open('LICENSE').read(),
-    long_description='',
+    long_description="",
 )
