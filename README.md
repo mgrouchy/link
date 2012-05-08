@@ -1,6 +1,22 @@
 #Link - A Linkedin API Wrapper that doesn't suck
 
 ![link](https://github.com/mgrouchy/link/raw/master/link.png)
+#Install
+
+You can install with setup.py
+
+```shell
+git clone git://github.com/mgrouchy/link.git
+cd link
+python setup.py install
+
+```
+
+or you can install with pip
+```shell
+    pip install link-py
+```
+
 #Magnets, how do they work?!
 
 Testing this from your interpreter is pretty easy
