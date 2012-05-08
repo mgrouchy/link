@@ -1,4 +1,4 @@
-#Link - A Linkedin API Wrapper that doesn't suck
+#Link - Your Master Sword for dealing with the Linkedin API
 
 ![link](https://github.com/mgrouchy/link/raw/master/link.png)
 #Install
