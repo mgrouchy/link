@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Link : Your Master Sword for dealing with the LinkedIn API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Link</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/mgrouchy/link">View on GitHub</a>
+
+          <h1 id="project_title">Link</h1>
+          <h2 id="project_tagline">Your Master Sword for dealing with the LinkedIn API</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/mgrouchy/link/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/mgrouchy/link/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Link - Your Master Sword for dealing with the LinkedIn API</h1>
+
+<p><img src="https://github.com/mgrouchy/link/raw/master/link.png" alt="link"></p>
+
+<h1>Install</h1>
+
+<p>You can install with setup.py</p>
+
+<pre lang="shell"><code>git clone git://github.com/mgrouchy/link.git
+cd link
+python setup.py install
+</code></pre>
+
+<p>or you can install with pip</p>
+
+<pre lang="shell"><code>pip install link-py
+</code></pre>
+
+<h1>Magnets, how do they work?!</h1>
+
+<p>Testing this from your interpreter is pretty easy</p>
+
+<div class="highlight">
+<pre><span class="kn">from</span> <span class="nn">link</span> <span class="kn">import</span> <span class="n">Link</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">Link</span><span class="p">(</span><span class="n">linkedin_key</span><span class="o">=</span><span class="s">'yourkeygoeshere'</span><span class="p">,</span> <span class="n">linkedin_secret</span><span class="o">=</span><span class="s">'yoursecretgoeshere'</span><span class="p">)</span>
+<span class="c"># get your request token and authorization url</span>
+<span class="n">request_token</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">get_request_token</span><span class="p">()</span>
+
+<span class="c"># now open up request_token['url'] in your browser and authorize your app</span>
+<span class="c"># you will be given a verifier with which you can get your access token</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">get_access_token</span><span class="p">(</span><span class="n">yourverfiergoeshere</span><span class="p">)</span>
+
+<span class="c">#now you can make a request for your profile info</span>
+<span class="n">l</span><span class="o">.</span><span class="n">get_profile</span><span class="p">()</span>
+
+<span class="c">#or maybe you want to get specific fields from your profile</span>
+<span class="n">l</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="n">field_selectors</span><span class="o">=</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'first-name'</span><span class="p">,</span> <span class="s">'last-name'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">))</span>
+
+</pre>
+</div>
+
+
+<h1>Bugs?</h1>
+
+<p>See a bug and want me to fix it? Create an issue and your wish, is my command(sort of).</p>
+
+<h1>Want to Contribute?</h1>
+
+<p>Fork this repo, submit a pull request with your changes and an updated Authors.md with your name.</p>
+
+<p>Thats it!</p>
+
+<p>Author: Mike Grouchy (<a href="http://twitter.com/mgrouchy">@mgrouchy</a>)</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Link maintained by <a href="https://github.com/mgrouchy">mgrouchy</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-1990784-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
