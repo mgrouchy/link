@@ -1,4 +1,4 @@
-#Link - Your Master Sword for dealing with the Linkedin API
+#Link - Your Master Sword for dealing with the LinkedIn API
 
 ![link](https://github.com/mgrouchy/link/raw/master/link.png)
 #Install
