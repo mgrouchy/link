@@ -1,4 +1,4 @@
-#Link - A Linkedin API Wrapper that doesn't suck
+#Link - Your Master Sword for dealing with the LinkedIn API
 
 ![link](https://github.com/mgrouchy/link/raw/master/link.png)
 #Install
@@ -9,12 +9,11 @@ You can install with setup.py
 git clone git://github.com/mgrouchy/link.git
 cd link
 python setup.py install
-
 ```
 
 or you can install with pip
 ```shell
-    pip install link-py
+pip install link-py
 ```
 
 #Magnets, how do they work?!

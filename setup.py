@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
-from link import __version__
+__version__ = (0,0,2)
 
 try:
     from setuptools import setup
@@ -27,7 +27,7 @@ setup(
                 'requests-oauth==0.3.0',
                 'simplejson==2.5.0',
                 'wsgiref==0.1.2'],
-    packages=['link', ],
-    license=open('LICENSE').read(),
+    packages=['link', ]
+    license='MIT',
     long_description="",
 )
