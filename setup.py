@@ -13,7 +13,7 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 setup(
-    name='link',
+    name='link-py',
     version='.'.join(str(x) for x in __version__),
     description='Your Master Sword for dealing with the Linkedin API',
     url='http://mikegrouchy.com/link',
