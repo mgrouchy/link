@@ -155,7 +155,7 @@ class Link(object):
         """
         qs = 'oauth_token=%s' % token
         if callback:
-            qs = '%s&oauth_callback=%s' % (qs, urllib.urlencode(callback))
+            qs = '%s&oauth_callback=%s' % (qs, urllib.quote(callback))
         return '%s?%s' % (self.authorize_url, qs)
 
     def get_request_token(self, callback=None):
