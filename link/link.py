@@ -40,7 +40,6 @@ class Link(object):
 
         self.oauth_token = oauth_token
         self.oauth_token_secret = oauth_token_secret
-
         self.client = self._get_authorized_client(self.linkedin_key, self.linkedin_secret,
                         oauth_token=self.oauth_token, oauth_token_secret=self.oauth_token_secret)
         self.request_token = None
@@ -155,7 +154,7 @@ class Link(object):
         """
         qs = 'oauth_token=%s' % token
         if callback:
-            qs = '%s&oauth_callback=%s' % (qs, urllib.quote(callback))
+            qs = '%s&oauth_callback=%s' % (qs, urllib.quote_plus(callback))
         return '%s?%s' % (self.authorize_url, qs)
 
     def get_request_token(self, callback=None):
@@ -164,7 +163,7 @@ class Link(object):
         the authorization url, cause you likely want it.
         :param callback
         """
-        response = self.client.get(self.request_token_url)
+        response = self.client.post(self.request_token_url, data={'oauth_callback': callback})
 
         self.request_token = parse_qs(response.content)
         # update variables

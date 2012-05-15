@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
-__version__ = (0, 0, 2)
+__version__ = (0, 0, 3)
 
 try:
     from setuptools import setup
