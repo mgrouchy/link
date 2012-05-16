@@ -103,8 +103,7 @@ class Link(object):
         else:
             named_param_str = '~'
 
-        if field_selectors:
-            field_selector_str = self._get_field_selector_str(field_selectors)
+        field_selector_str = self._get_field_selector_str(field_selectors)
 
         endpoint = endpoint % ({
                                 'named_params': named_param_str,
