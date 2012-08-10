@@ -39,22 +39,21 @@
 
 <p>You can install with setup.py</p>
 
-<pre lang="shell"><code>git clone git://github.com/mgrouchy/link.git
-cd link
+<div class="highlight"><pre>git clone git://github.com/mgrouchy/link.git
+<span class="nb">cd </span>link
 python setup.py install
-</code></pre>
+</pre></div>
 
 <p>or you can install with pip</p>
 
-<pre lang="shell"><code>pip install link-py
-</code></pre>
+<div class="highlight"><pre>pip install link-py
+</pre></div>
 
 <h1>Magnets, how do they work?!</h1>
 
 <p>Testing this from your interpreter is pretty easy</p>
 
-<div class="highlight">
-<pre><span class="kn">from</span> <span class="nn">link</span> <span class="kn">import</span> <span class="n">Link</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">link</span> <span class="kn">import</span> <span class="n">Link</span>
 <span class="n">l</span> <span class="o">=</span> <span class="n">Link</span><span class="p">(</span><span class="n">linkedin_key</span><span class="o">=</span><span class="s">'yourkeygoeshere'</span><span class="p">,</span> <span class="n">linkedin_secret</span><span class="o">=</span><span class="s">'yoursecretgoeshere'</span><span class="p">)</span>
 <span class="c"># get your request token and authorization url</span>
 <span class="n">request_token</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">get_request_token</span><span class="p">()</span>
@@ -64,14 +63,11 @@ python setup.py install
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">get_access_token</span><span class="p">(</span><span class="n">yourverfiergoeshere</span><span class="p">)</span>
 
 <span class="c">#now you can make a request for your profile info</span>
-<span class="n">l</span><span class="o">.</span><span class="n">get_profile</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">profile</span><span class="p">()</span>
 
 <span class="c">#or maybe you want to get specific fields from your profile</span>
-<span class="n">l</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="n">field_selectors</span><span class="o">=</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'first-name'</span><span class="p">,</span> <span class="s">'last-name'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">))</span>
-
-</pre>
-</div>
-
+<span class="n">l</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span><span class="n">field_selectors</span><span class="o">=</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'first-name'</span><span class="p">,</span> <span class="s">'last-name'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">))</span>
+</pre></div>
 
 <h1>Bugs?</h1>
 
