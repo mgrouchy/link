@@ -43,7 +43,8 @@ See a bug and want me to fix it? Create an issue and your wish, is my command(so
 
 
 #Want to Contribute?
-Fork this repo, submit a pull request with your changes and an updated Authors.md with your name.
+Fork this repo, submit a pull request to `dev` the active development branch
+with your changes and an updated Authors.md with your name.
 
 Thats it!
 
