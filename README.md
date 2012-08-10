@@ -31,10 +31,10 @@ request_token = l.get_request_token()
 access_token = l.get_access_token(yourverfiergoeshere)
 
 #now you can make a request for your profile info
-l.get_profile()
+l.profile()
 
 #or maybe you want to get specific fields from your profile
-l.get_profile(field_selectors=('id', 'first-name', 'last-name', 'company'))
+l.profile(field_selectors=('id', 'first-name', 'last-name', 'company'))
 
 ```
 
