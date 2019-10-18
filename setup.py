@@ -23,7 +23,7 @@ setup(
                 'chardet==1.0.1',
                 'httplib2==0.7.4',
                 'oauth2==1.5.211',
-                'requests==0.11.2',
+                'requests==2.20.0',
                 'requests-oauth==0.3.0',
                 'simplejson==2.5.0',
                 'wsgiref==0.1.2'],
