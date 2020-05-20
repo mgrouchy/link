@@ -21,7 +21,7 @@ setup(
     author_email='mgrouchy@gmail.com',
     install_requires=['certifi==0.0.8',
                 'chardet==1.0.1',
-                'httplib2==0.7.4',
+                'httplib2==0.18.0',
                 'oauth2==1.5.211',
                 'requests==0.11.2',
                 'requests-oauth==0.3.0',
