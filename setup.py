@@ -19,7 +19,7 @@ setup(
     url='http://mikegrouchy.com/link',
     author='Mike Grouchy',
     author_email='mgrouchy@gmail.com',
-    install_requires=['certifi==0.0.8',
+    install_requires=['certifi==2022.12.7',
                 'chardet==1.0.1',
                 'httplib2==0.7.4',
                 'oauth2==1.5.211',
